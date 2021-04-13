@@ -21,3 +21,5 @@ for line in file:
 
 print(f"Ending Floor: {floor}")
 print(f"Basement Index: {basement_index}")
+
+file.close()

@@ -36,5 +36,7 @@ def main():
     print(f"Wrapping Paper Needed: {total_paper}")
     print(f"Ribbon Needed: {total_ribbon}")
 
+    file.close()
+
 if __name__=="__main__":
     main()
