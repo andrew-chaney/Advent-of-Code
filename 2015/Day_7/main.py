@@ -8,7 +8,7 @@ def outgoingSig(signals: dict, wire: str) -> int:
     global completed_signals
 
     if wire not in completed_signals:
-        # If we don't have know the outgoing signal of the wire, find it
+        # If we don't know the outgoing signal of the wire, find it
         input = signals[wire]
         # If the outgoing signal for the wire is explicit, return the signal
         if len(input) == 1:
