@@ -3,7 +3,7 @@ import re
 
 # Turn off specified lights ('0' is off)
 def turn_off(x1: int, y1: int, x2: int, y2: int, arr: list[list[int]]) -> list[list[int]]:
-    # Iterate over the inputted range and turn on the lights
+    # Iterate over the inputted range and turn off the lights
     if x1 != x2 and y1 != y2:
         for i in range(x1, x2 + 1):
             for j in range(y1, y2 + 1):

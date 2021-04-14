@@ -67,7 +67,7 @@ def part2(directions):
 
 
 def main():
-    path = "/Users/andrewchaney/Documents/Coding Challenges/Python-Advent-of-Code/2015/Day_3/puzzle_input.txt"
+    path = "puzzle_input.txt"
     with open(path, "r") as file:
         directions = file.read()
 
