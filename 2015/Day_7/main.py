@@ -3,12 +3,12 @@ import re
 # GLOBAL
 completed_signals = {}
 
-# Solve for outgoing signal using recursion
+# Solve for outgoing signal
 def outgoingSig(signals: dict, wire: str) -> int:
     global completed_signals
 
+    # If we don't know the outgoing signal of the wire, find it
     if wire not in completed_signals:
-        # If we don't know the outgoing signal of the wire, find it
         input = signals[wire]
         # If the outgoing signal for the wire is explicit, return the signal
         if len(input) == 1:
