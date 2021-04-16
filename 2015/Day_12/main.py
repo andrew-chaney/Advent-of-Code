@@ -1,5 +1,4 @@
 import json
-from os import read
 
 def readAndSum(input, p2: bool) -> int:
     # Go through all data types recursively to find integers, when ints are founr return them
