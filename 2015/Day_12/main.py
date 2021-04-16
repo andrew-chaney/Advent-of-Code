@@ -19,10 +19,6 @@ def readAndSum(input, p2: bool) -> int:
 def main():
     path = "puzzle_input.txt"
 
-    print(readAndSum({"d": "red", "e": [1, 2, 3, 4], "f": 5}, True))
-
-    TEST_FUNCTION()
-
     with open(path, "r") as file:
         data = json.loads(file.read())
         part1 = readAndSum(data, False)
@@ -48,4 +44,5 @@ def TEST_FUNCTION() -> bool:
     assert readAndSum([1, "red", 5], True) == 6
 
 if __name__ == "__main__":
+    TEST_FUNCTION()
     main()
