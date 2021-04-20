@@ -3,6 +3,7 @@ from itertools import cycle
 def main():
     path = "puzzle_input.txt"
 
+    race_length = 2503
     stats = {}
     distances = {}
     points = {}
@@ -16,8 +17,6 @@ def main():
             rest_time = input[13]
             stats[name] = (int(speed), int(flight_time), int(rest_time))
 
-    race_length = 2503
-
     for deer in stats:
         x = stats[deer]
         points[deer] = 0
@@ -27,7 +26,6 @@ def main():
     longest_dist = max([sum(distances[deer]) for deer in distances])
     print(f"Furthest Distance: {longest_dist}")
 
-    
     for i in range(1, race_length + 1):
         dist = [sum(distances[deer][:i]) for deer in distances]
         for x, deer in enumerate(points):
