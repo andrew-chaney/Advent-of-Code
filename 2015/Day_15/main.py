@@ -1,5 +1,5 @@
 def main():
-    path = "/home/andrewchaney/Documents/Coding Challenges/Advent-of-Code/2015/Day_15/puzzle_input.txt"
+    path = "puzzle_input.txt"
 
     available_tsp = 100
 
