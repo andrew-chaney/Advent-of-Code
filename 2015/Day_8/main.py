@@ -62,7 +62,7 @@ def main():
 
     print(f"Part 1 Delta: {part1(path)}")
 
-    print(f"Part 2 Delta: {part2(test_path)}")
+    print(f"Part 2 Delta: {part2(path)}")
 
 if __name__=="__main__":
     main()
