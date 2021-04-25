@@ -17,7 +17,7 @@ def separate(containers: list[int], amt: int, minimum_containers=None) -> int:
 
 def findMinNeeded(containers: list[int], amt: int) -> int:
     min_containers = len(containers)
-    for i in range(len(containers)):
+    for i in range(1, len(containers)):
         possibilities = combinations(containers, i)
         for x in possibilities:
             if sum(list(x)) == amt:
