@@ -1,4 +1,5 @@
 import re
+from itertools import permutations
 
 def part1(poss: list[list[str]], start: str) -> int:
     options = set()
@@ -9,19 +10,32 @@ def part1(poss: list[list[str]], start: str) -> int:
                 options.add(new_element)
     return len(options)
 
-# Do this part in reverse to avoid backtracking
-# I had to get help with this part
-def part2(poss: dict, start: str, goal: str) -> int:
-
-    def getReplacement(i):
-        return poss[i.group()]
-    
+# In reverse so we can match from right to left
+def part2(poss, start: str, goal: str) -> int:
     count = 0
-    while start != goal:
-        start = re.sub('|'.join(poss.keys()), getReplacement, start, 1)
-        count += 1
-    
-    return count
+
+    while start != "e":
+        previous = start
+        for k in poss.keys():
+            if k in start:
+                start = start.replace(k, poss[k], 1)
+                count += 1
+                break
+        if previous == start:
+            break
+
+    # Pull out all elements that won't match
+    start = start.replace("rA", " ")
+    start = start.replace("nR", " ")
+    start = start.replace("Y", " ")
+    leftovers = start.split()
+    # Count remaining elements if they belong to a key
+    leftover_count = 0
+    for i in leftovers:
+        if i in poss.values():
+            leftover_count += 1
+
+    return count + leftover_count
 
 def main():
     path = "puzzle_input.txt"
@@ -38,7 +52,7 @@ def main():
                 poss.append([key,val])
                 altered_poss[val[::-1]] = key[::-1]
             else:
-                start = line    
+                start = line.strip()
 
     print(f"Part 1: {part1(poss, start)}")
 
