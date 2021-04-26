@@ -82,18 +82,18 @@ class Grid:
 def main():
     path = "puzzle_input.txt"
 
-    grid = []
+    initial = []
     steps = 100
     
     with open(path, "r") as file:
         for line in file:
-            grid.append([i for i in line.strip()])
+            initial.append([i for i in line.strip()])
 
-    part1 = Grid(grid)
+    part1 = Grid(initial)
     part1.stepState(steps, False)
     print(f"Part 1: {part1.countLitLights()}")
 
-    part2 = Grid(grid)
+    part2 = Grid(initial)
     part2.setStickyCorners()
     part2.stepState(steps, True)
     print(f"Part 2: {part2.countLitLights()}")
