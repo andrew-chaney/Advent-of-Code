@@ -75,10 +75,6 @@ class Grid:
         self.state[self.stateLength()-1][0] = "#"
         self.state[self.stateLength()-1][self.stateWidth()-1] = "#"
 
-    def printState(self):
-        for line in self.state:
-            print(line)
-
 def main():
     path = "puzzle_input.txt"
 
