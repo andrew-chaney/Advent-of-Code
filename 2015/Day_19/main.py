@@ -21,7 +21,7 @@ def part2(poss, start: str, goal: str) -> int:
                 start = start.replace(k, poss[k], 1)
                 count += 1
                 break
-        if previous == start:
+        if previous == start: # if it is no longer making updates, break
             break
 
     # Pull out all elements that won't match
