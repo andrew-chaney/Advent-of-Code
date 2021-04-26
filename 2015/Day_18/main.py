@@ -45,7 +45,7 @@ class Grid:
     
     def stepState(self, steps: int, part2: bool):
         for _ in range(steps):
-           self.morphState(True) if part2 == True else self.morphState(False)
+            self.morphState(part2)
     
     def countLitLights(self) -> int:
         count = 0
