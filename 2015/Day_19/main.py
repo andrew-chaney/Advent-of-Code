@@ -1,8 +1,5 @@
-import re
-from itertools import permutations
-
 def part1(poss: list[list[str]], start: str) -> int:
-    options = set()
+    options = set() # set over list to avoid duplicates
     for element, replace in poss:
         for index in range(len(start)):
             if start[index:index+len(element)] == element:
