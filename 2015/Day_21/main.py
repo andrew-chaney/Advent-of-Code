@@ -1,4 +1,4 @@
-from itertools import combinations, permutations
+from itertools import combinations
 
 class Player:
     def __init__(self, hp: int, dmg: int, rmr: int):
