@@ -46,16 +46,16 @@ def findMinMax(boss, player, weps: dict, armor: dict, rings: dict, pt2=False) ->
         min_cost = 0
     else:
         max_cost = 0
-    for w in combinations(weps.keys(), 1):
-        for a in combinations(armor.keys(), 1):
+    for w in weps.keys():
+        for a in armor.keys():
             for rs in combinations(rings.keys(), 2):
                 boss.reset()
                 player.reset()
                 cost = 0
-                player.addDMG(weps[w[0]][1])
-                cost += weps[w[0]][0]
-                player.addRMR(armor[a[0]][1])
-                cost += armor[a[0]][0]
+                player.addDMG(weps[w][1])
+                cost += weps[w][0]
+                player.addRMR(armor[a][1])
+                cost += armor[a][0]
                 for r in rs:
                     player.addDMG(rings[r][1])
                     player.addRMR(rings[r][2])
