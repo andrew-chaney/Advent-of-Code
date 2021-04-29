@@ -1,159 +1,112 @@
-from random import randint
-from tqdm import tqdm
-
 spells = {  # Mana Cost, Damage, Heals
-        "Magic Missle": [53, 4, 0],
-        "Drain": [73, 2, 2],
-        "Shield": [113, 0, 0], # +7 armor for 6 turns
-        "Poison": [173, 0, 0], # enemy -3 HP each turn for 6 turns, set to zero because it doesn't immediately inflict damage
-        "Recharge": [229, 0, 0] # +101 mana each turn for 5 turns
-    }
+    "Magic Missle": [53, 4, 0],
+    "Drain": [73, 2, 2],
+    "Shield": [113, 0, 0],  # +7 armor for 6 turns
+    # enemy -3 HP each turn for 6 turns, set to zero because it doesn't immediately inflict damage
+    "Poison": [173, 0, 0],
+    "Recharge": [229, 0, 0]  # +101 mana each turn for 5 turns
+}
 
-class Player:
-    def __init__(self, hp: int, damage: int, wiz: bool):
-        self.hp = hp
-        self.dmg = damage
-        self.rmr = 0
-        self.mana = 0 if not wiz else 500
-        self.spentMANA = 0
-        self.defaultHP = hp
-        self.defaultDMG = damage
-        self.defaultRMR = 0
-        self.defaultMANA = 0 if not wiz else 500
-        self.defaultSpentMANA = 0
-    
-    def getHP(self) -> int:
-        return self.hp
-    
-    def getDMG(self) -> int:
-        return self.dmg
-    
-    def getRMR(self) -> int:
-        return self.rmr
-    
-    def getMANA(self) -> int:
-        return self.mana
+def rndBeginning(bHP, pRMR, pMANA, shield, poison, recharge):
+    if shield > 0:
+        pRMR = 7
+        shield -= 1
+    if poison > 0:
+        bHP -= 3
+        poison -= 1
+    if recharge > 0:
+        pMANA += 101
+        recharge -= 1
+    return (bHP, pRMR, pMANA, shield, poison, recharge)
 
-    def getSpentMANA(self) -> int:
-        return self.spentMANA
-
-    def useMANA(self, loss: int):
-        self.mana -= loss
-        self.spentMANA += loss
-
-    def gainMANA(self, gain: int):
-        self.mana += gain
-    
-    def loseHP(self, loss: int):
-        self.hp -= loss
-
-    def gainHP(self, gain: int):
-        self.hp += gain
-
-    def setShield(self):
-        self.rmr = 7
-
-    def rmvShield(self):
-        self.rmr = 0
-
-    def reset(self):
-        self.hp = self.defaultHP
-        self.dmg = self.defaultDMG
-        self.rmr = self.defaultRMR
-        self.mana = self.defaultMANA
-        self.spentMANA = self.defaultSpentMANA
-
-def castSpell() -> str:
-    num = randint(0, 4)
-    if num == 0:
-        return "Magic Missle"
-    elif num == 1:
-        return "Drain"
-    elif num == 2:
-        return "Shield"
-    elif num == 3:
-        return "Poison"
-    else:
-        return "Recharge"
-
-def battle(boss, player):#, avail_spells: list[str]): #, spells: dict) -> bool:
+def battle(bHP, bDMG, pHP, pMANA, minSpent, spent, start_spell, shield, poison, recharge, part2):
     global spells
-    boss.reset()
-    player.reset()
+    pRMR = 0
 
-    shield = 0
-    poison = 0
-    recharge = 0
-
-    turn = 0
-    while True:
-        if shield > 0:
-            shield -= 1
-            if shield == 0:
-                player.rmvShield()
-        if poison > 0:
-            boss.loseHP(3)
-            poison -= 1
-        if recharge > 0:
-            player.gainMANA(101)
-            recharge -= 1
+    # Actions that happen at the beginning of each round
+    if minSpent <= spent:
+        return minSpent
     
-        if turn % 2 == 0:    # Player's move
-            if player.getMANA() >= 53:
-                while True:
-                    spell = castSpell()
-                    if spells[spell][0] <= player.getMANA():
-                        player.useMANA(spells[spell][0])
-                        boss.loseHP(spells[spell][1])
-                        player.gainHP(spells[spell][2])
+    if part2:
+        pHP -= 1
+        if pHP <= 0:
+            return minSpent
 
-                        if spell == "Shield":
-                            shield = 6
-                        elif spell == "Poison":
-                            poison = 6
-                        elif spell == "Recharge":
-                            recharge = 5
-                        break
-        
-        else:   # Boss' turn
-            player.loseHP(max(boss.getDMG() - player.getRMR(), 1))
-        
-        if boss.getHP() <= 0:
-            return (True, player.getSpentMANA())
-        elif player.getHP() <= 0:
-            return (False, 0)
-        else:
-            turn += 1
+    bHP, pRMR, pMANA, shield, poison, recharge = rndBeginning(bHP, pRMR, pMANA, shield, poison, recharge)
+    # See if the boss is dead yet
+    if bHP <= 0:
+        return min(minSpent, spent)
+    
+    # Player's turn
+    spent += spells[start_spell][0]
+    pMANA -= spells[start_spell][0]
+    bHP -= spells[start_spell][1]
+    pHP += spells[start_spell][2]
+    if start_spell == "Shield":
+        shield = 6
+    elif start_spell == "Poison":
+        poison = 6
+    elif start_spell == "Recharge":
+        recharge = 5
+    if bHP <= 0:
+        return min(minSpent, spent)
 
-def findMinMana(boss, player):#, spells: dict):
+    # Actions that happen at the beginning of each round
+    if minSpent <= spent:
+        return minSpent
+
+    if part2:
+        pHP -= 1
+        if pHP <= 0:
+            return minSpent
+
+    bHP, pRMR, pMANA, shield, poison, recharge = rndBeginning(bHP, pRMR, pMANA, shield, poison, recharge)
+    # See if the boss is dead yet
+    if bHP <= 0:
+        return min(minSpent, spent)
+
+    # Boss' turn
+    pHP -= max(bDMG - pRMR, 1)
+    if pHP <= 0:
+        return minSpent
+
+    # If nobody is dead yet, keep playing
+    for spell in spells.keys():
+        if spells[spell][0] <= pMANA:
+            minSpent = min(minSpent, battle(bHP, bDMG, pHP, pMANA, minSpent, spent, spell, shield, poison, recharge, part2))
+
+    return minSpent
+
+def findMinMana(bHP, bDMG, pHP, pMANA, part2):
     global spells
+
     min_mana = 1000000
-    for i in tqdm(range(1_000_000), desc="Solving...", ascii=False, ncols=100):
-        results = battle(boss, player)
-        if results[0] == True:
-            # print("FINALLY, A WIN GOOD SIR.")
-            if results[1] < min_mana:
-                min_mana = results[1]
+    for spell in spells.keys():
+        results = battle(bHP, bDMG, pHP, pMANA, min_mana, 0, spell, 0, 0, 0, part2)
+        min_mana = min(min_mana, results)
     return min_mana
+
 
 def main():
     path = "puzzle_input.txt"
 
-    cpu = [] # hitpoints (hp) and damage
+    cpu = []  # hitpoints (hp) and damage
 
     with open(path, "r") as file:
         for line in file:
             input = line.split()
             cpu.append(int(input[-1]))
 
-    boss = Player(cpu[0], cpu[1], False)
-    henry = Player(50, 0, True)
+    bossHP = cpu[0]
+    bossDMG = cpu[1]
+    henryHP = 50
+    henryMANA = 500
 
-    # print(findMinMana(boss, henry))
+    part1 = findMinMana(bossHP, bossDMG, henryHP, henryMANA, part2=False)
+    part2 = findMinMana(bossHP, bossDMG, henryHP, henryMANA, part2=True)
 
-    test_b = Player(13, 8, False)
-    test_p = Player(10, 0, True)
-    print(findMinMana(test_b, test_p))
+    print(f"Part 1: {part1}")
+    print(f"Part 2: {part2}")
 
 if __name__ == "__main__":
     main()
