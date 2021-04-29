@@ -1,4 +1,5 @@
-from itertools import combinations_with_replacement, permutations
+from random import randint
+from tqdm import tqdm
 
 spells = {  # Mana Cost, Damage, Heals
         "Magic Missle": [53, 4, 0],
@@ -62,89 +63,77 @@ class Player:
         self.mana = self.defaultMANA
         self.spentMANA = self.defaultSpentMANA
 
-def battle(boss, player, avail_spells: list[str]): #, spells: dict) -> bool:
+def castSpell() -> str:
+    num = randint(0, 4)
+    if num == 0:
+        return "Magic Missle"
+    elif num == 1:
+        return "Drain"
+    elif num == 2:
+        return "Shield"
+    elif num == 3:
+        return "Poison"
+    else:
+        return "Recharge"
+
+def battle(boss, player):#, avail_spells: list[str]): #, spells: dict) -> bool:
     global spells
     boss.reset()
     player.reset()
 
-    shield = False
-    shield_count = 0
-    poison = False
-    poison_count = 0
-    recharge = False
-    recharge_count = 0
-    turn = True
-    spell_tracker = 0
-    got_mana = True
+    shield = 0
+    poison = 0
+    recharge = 0
 
+    turn = 0
     while True:
-        if shield == True:
-            shield_count -= 1
-            if shield_count == 0:
+        if shield > 0:
+            shield -= 1
+            if shield == 0:
                 player.rmvShield()
-                shield = False
-        if poison == True:
+        if poison > 0:
             boss.loseHP(3)
-            poison_count -= 1
-            if poison_count == 0:
-                poison = False
-        if recharge == True:
+            poison -= 1
+        if recharge > 0:
             player.gainMANA(101)
-            recharge_count -= 1
-            if recharge_count == 0:
-                recharge = False
+            recharge -= 1
     
-        if turn == True:    # Player's move
+        if turn % 2 == 0:    # Player's move
             if player.getMANA() >= 53:
-                for _ in range(len(avail_spells)):
-                    if spell_tracker < len(avail_spells):
-                        spell = avail_spells[spell_tracker]
-                        if player.getMANA() >= spells[spell][0]:
-                            player.useMANA(spells[spell][0])
-                            boss.loseHP(spells[spell][1])
-                            player.gainHP(spells[spell][2])
-                            spell_tracker += 1
-                            break
-                        else:
-                            spell_tracker += 1
-                    else:
-                        spell_tracker = 0
-            else:
-                got_mana = False
+                while True:
+                    spell = castSpell()
+                    if spells[spell][0] <= player.getMANA():
+                        player.useMANA(spells[spell][0])
+                        boss.loseHP(spells[spell][1])
+                        player.gainHP(spells[spell][2])
 
-            if spell == "Shield":
-                shield = True
-                shield_count = 6
-            elif spell == "Poison":
-                poison = True
-                poison_count = 6
-            elif spell == "Recharge":
-                recharge = True
-                recharge_count = 5
-            turn = False
+                        if spell == "Shield":
+                            shield = 6
+                        elif spell == "Poison":
+                            poison = 6
+                        elif spell == "Recharge":
+                            recharge = 5
+                        break
         
         else:   # Boss' turn
             player.loseHP(max(boss.getDMG() - player.getRMR(), 1))
-            turn = True
         
         if boss.getHP() <= 0:
             return (True, player.getSpentMANA())
         elif player.getHP() <= 0:
             return (False, 0)
-        elif got_mana == False:
-            return (False, 0)
+        else:
+            turn += 1
 
 def findMinMana(boss, player):#, spells: dict):
     global spells
-    min_mana = 0
-    # for i in range(1, 10):
-    # for i in tqdm(range(1,10), desc="Solving...",ascii=False,ncols=75):
-    for x in combinations_with_replacement(spells.keys(), 10):
-        for y in permutations(list(x), len(list(x))):
-            result = battle(boss, player, list(y))
-            if result[0] == True:
-                if min_mana == 0 or result[1] < min_mana:
-                    min_mana = result[1]
+    min_mana = 1000000
+    for i in tqdm(range(1_000_000), desc="Solving...", ascii=False, ncols=100):
+        results = battle(boss, player)
+        if results[0] == True:
+            # print("FINALLY, A WIN GOOD SIR.")
+            if results[1] < min_mana:
+                min_mana = results[1]
     return min_mana
 
 def main():
@@ -160,11 +149,11 @@ def main():
     boss = Player(cpu[0], cpu[1], False)
     henry = Player(50, 0, True)
 
-    print(findMinMana(boss, henry))
+    # print(findMinMana(boss, henry))
 
     test_b = Player(13, 8, False)
     test_p = Player(10, 0, True)
-    # print(findMinMana(test_b, test_p))
+    print(findMinMana(test_b, test_p))
 
 if __name__ == "__main__":
     main()
