@@ -54,8 +54,7 @@ def findRegister(file_path: str, desired_register: str, part2=False) -> int:
     return registers[desired_register]
 
 def main():
-    base = "/Users/andrewchaney/Documents/Coding Challenges/Advent-of-Code/2015/Day_23/"
-    path = base + "puzzle_input.txt"
+    path = "puzzle_input.txt"
     
     part1 = findRegister(path, "b")
     print(f"Part 1: {part1}")
