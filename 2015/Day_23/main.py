@@ -1,5 +1,3 @@
-import re
-
 def hlf(r: float) -> float:
     return r / 2
 
