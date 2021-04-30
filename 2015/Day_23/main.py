@@ -13,7 +13,6 @@ def jie(r: float, offset: int) -> int:
 def jio(r: float, offset: int) -> int:
     return offset - 1 if r == 1 else 0
 
-
 def findRegister(file_path: str, desired_register: str, part2=False) -> int:
     instructs = []
     if part2 != False:
