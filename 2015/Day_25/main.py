@@ -7,8 +7,7 @@ def generatePassword(current: int) -> int:
     return (current * 252533) % 33554393
 
 def main():
-    base = "/Users/andrewchaney/Documents/Coding Challenges/Advent-of-Code/2015/Day_25/"
-    path = base + "puzzle_input.txt"
+    path = "puzzle_input.txt"
 
     row = 0
     col = 0
