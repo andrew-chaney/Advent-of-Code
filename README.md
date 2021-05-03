@@ -5,7 +5,7 @@ The challenges will be completed in varying languages, but all of the challenges
 
 2015: Python3
 
-2016:
+2016: GoLang
 
 2017:
 
