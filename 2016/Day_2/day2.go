@@ -38,15 +38,16 @@ func moveUp(button string) string {
 			return button
 		}
 	}
-	if button == "A" {
+	switch button {
+	case "A":
 		return "6"
-	} else if button == "B" {
+	case "B":
 		return "7"
-	} else if button == "C" {
+	case "C":
 		return "8"
-	} else if button == "D" {
+	case "D":
 		return "B"
-	} else {
+	default:
 		i_button, err := strconv.Atoi(button)
 		if err != nil {
 			fmt.Println(err)
@@ -66,17 +67,18 @@ func moveDown(button string) string {
 			return button
 		}
 	}
-	if button == "6" {
+	switch button {
+	case "6":
 		return "A"
-	} else if button == "7" {
+	case "7":
 		return "B"
-	} else if button == "8" {
+	case "8":
 		return "C"
-	} else if button == "B" {
+	case "B":
 		return "D"
-	} else if button == "1" {
+	case "1":
 		return "3"
-	} else {
+	default:
 		i_button, err := strconv.Atoi(button)
 		if err != nil {
 			fmt.Println(err)
@@ -92,11 +94,12 @@ func moveLeft(button string) string {
 			return button
 		}
 	}
-	if button == "B" {
+	switch button {
+	case "B":
 		return "A"
-	} else if button == "C" {
+	case "C":
 		return "B"
-	} else {
+	default:
 		i_button, err := strconv.Atoi(button)
 		if err != nil {
 			fmt.Println(err)
@@ -112,11 +115,12 @@ func moveRight(button string) string {
 			return button
 		}
 	}
-	if button == "A" {
+	switch button {
+	case "A":
 		return "B"
-	} else if button == "B" {
+	case "B":
 		return "C"
-	} else {
+	default:
 		i_button, err := strconv.Atoi(button)
 		if err != nil {
 			fmt.Println(err)
@@ -143,7 +147,6 @@ func solutionPart2(instructions string, button string) string {
 
 func main() {
 	path := "puzzle_input.txt"
-	// test := base + "test_input.txt"
 	file, err := ioutil.ReadFile(path)
 	if err != nil {
 		fmt.Println(err)
