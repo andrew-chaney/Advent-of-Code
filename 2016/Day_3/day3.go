@@ -46,10 +46,10 @@ func isValid(v [3]int) bool {
 	return false
 }
 
-func part1(dimensions [1902][3]int) int {
+func part1(triangles [1902][3]int) int {
 	count := 0
-	for _, v := range dimensions {
-		if isValid(v) {
+	for _, t := range triangles {
+		if isValid(t) {
 			count += 1
 		}
 	}
