@@ -92,9 +92,7 @@ func supportsSSL(line string) bool {
 func main() {
 	path := "puzzle_input.txt"
 	file, err := ioutil.ReadFile(path)
-	if err != nil {
-		fmt.Println(err)
-	}
+	handle(err)
 	lines := strings.Split(string(file), "\n")
 
 	part1 := 0
