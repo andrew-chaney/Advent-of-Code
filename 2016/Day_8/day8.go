@@ -111,7 +111,6 @@ func main() {
 
 	part1 := countLit(screen)
 	fmt.Println("Part 1:", part1)
-	// Part 2
 	fmt.Println("Part 2:\n")
 	displayScreen(screen)
 }
