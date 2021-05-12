@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
-	"regexp"
 	"strconv"
 	"strings"
 )
@@ -66,6 +65,7 @@ func countLit(arr [6][50]int) int {
 }
 
 func displayScreen(arr [6][50]int) {
+	fmt.Println()
 	for i := 0; i < len(arr); i++ {
 		for j := 0; j < len(arr[i]); j++ {
 			if arr[i][j] == 1 {
@@ -82,17 +82,15 @@ func main() {
 	path := "puzzle_input.txt"
 	file, err := ioutil.ReadFile(path)
 	handle(err)
-	r, err := regexp.Compile("\\w+")
-	handle(err)
 	lines := strings.Split(string(file), "\n")
 
 	var screen [6][50]int
 	for i := 0; i < len(lines); i++ {
-		input := r.FindAllString(lines[i], len(lines[i]))
+		input := strings.Split(lines[i], " ")
 		if input[0] == "rotate" {
-			index, err := strconv.Atoi(input[3])
+			index, err := strconv.Atoi(strings.Split(input[2], "=")[1])
 			handle(err)
-			amt, err := strconv.Atoi(input[5])
+			amt, err := strconv.Atoi(input[4])
 			handle(err)
 			if input[1] == "row" {
 				screen = rotateRow(screen, index, amt)
@@ -111,6 +109,6 @@ func main() {
 
 	part1 := countLit(screen)
 	fmt.Println("Part 1:", part1)
-	fmt.Println("Part 2:\n")
+	fmt.Println("Part 2:")
 	displayScreen(screen)
 }
