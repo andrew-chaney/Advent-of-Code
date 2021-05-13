@@ -33,7 +33,6 @@ func decompressedLength(input string, part2 bool) int {
 	} else {
 		size = decompressedLength(string(input[index2+1:index2+1+slice_length]), part2)
 	}
-
 	return len(input[:index1]) + (size * repetitions) + decompressedLength(input[index2+1+slice_length:], part2)
 }
 
