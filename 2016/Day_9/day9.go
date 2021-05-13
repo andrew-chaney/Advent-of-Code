@@ -23,18 +23,18 @@ func decompressedLength(input string, part2 bool) int {
 	}
 	marker := string(input[index1+1 : index2])
 	nums := strings.Split(marker, "x")
-	slice_size, err := strconv.Atoi(nums[0])
+	slice_length, err := strconv.Atoi(nums[0])
 	handle(err)
 	repetitions, err := strconv.Atoi(nums[1])
 	handle(err)
-	var count int
+	var size int
 	if part2 == false {
-		count = slice_size
+		size = slice_length
 	} else {
-		count = decompressedLength(string(input[index2+1:index2+1+slice_size]), part2)
+		size = decompressedLength(string(input[index2+1:index2+1+slice_length]), part2)
 	}
 
-	return len(input[:index1]) + (count * repetitions) + decompressedLength(input[index2+1+slice_size:], part2)
+	return len(input[:index1]) + (size * repetitions) + decompressedLength(input[index2+1+slice_length:], part2)
 }
 
 func main() {
