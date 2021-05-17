@@ -60,7 +60,7 @@ public class day1 {
         System.out.println("Part 2: " + part2(directions));
     }
 
-    public static char getDirection(char facing, char turning) {
+    static char getDirection(char facing, char turning) {
         char[] compass = new char[]{'W', 'N', 'E', 'S'};
         int facing_index = 0;
         for (int i = 0; i < compass.length; i++) {
@@ -86,11 +86,11 @@ public class day1 {
         }
     }
 
-    public static int blocksAway(int x, int y) {
+    static int blocksAway(int x, int y) {
         return Math.abs(x) + Math.abs(y);
     }
 
-    public static int part1(ArrayList<String> directions) {
+    static int part1(ArrayList<String> directions) {
         Coordinates hq_location = new Coordinates(0, 0);
         char facing = 'N';
         for (String direc: directions) {
@@ -110,7 +110,7 @@ public class day1 {
         return blocksAway(hq_location.getX(), hq_location.getY());
     }
 
-    public static int part2(ArrayList<String> directions) {
+    static int part2(ArrayList<String> directions) {
         Coordinates loc = new Coordinates(0,0);
         char facing = 'N';
         ArrayList<ArrayList<Integer>> visited = new ArrayList<ArrayList<Integer>>();
