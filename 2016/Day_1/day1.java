@@ -33,9 +33,6 @@ public class day1 {
                 facing_index = i;
             }
         }
-        if (facing_index < 0) {
-            facing_index = compass.length - facing_index;
-        }
         if (turning == 'L') {
             if (facing_index - 1 >= 0) {
                return compass[facing_index - 1];
