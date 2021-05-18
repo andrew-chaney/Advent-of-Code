@@ -71,7 +71,7 @@ public class day4 {
 
     static String getChecksum(String input) 
     {
-        return input.substring(input.length() - 6, input.length() - 1);
+        return input.substring(input.indexOf('[') + 1, input.indexOf(']') - 1);
     }
 
     static int getSectorID(String input)
