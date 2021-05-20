@@ -15,6 +15,7 @@ public class day6 {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            System.exit(1);
         }
 
         System.out.println("Part 1: " + errorCorrect(input, false));
