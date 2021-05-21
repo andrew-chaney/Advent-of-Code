@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class day3 {
 
-    public static void main(String[] argv) 
+    public static void main(String[] args) 
     {
         String path = "puzzle_input.txt";
         File myFile = new File(path);
