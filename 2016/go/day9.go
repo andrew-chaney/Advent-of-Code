@@ -40,15 +40,7 @@ func main() {
 	path := "puzzle_input.txt"
 	file, err := ioutil.ReadFile(path)
 	handle(err)
-	lines := strings.Split(string(file), "\n")
 
-	part1 := 0
-	part2 := 0
-	for _, line := range lines {
-		part1 += decompressedLength(line, false)
-		part2 += decompressedLength(line, true)
-	}
-
-	fmt.Println("Part 1:", part1)
-	fmt.Println("Part 2:", part2)
+	fmt.Println("Part 1:", decompressedLength(string(file), false))
+	fmt.Println("Part 2:", decompressedLength(string(file), true))
 }

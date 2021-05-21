@@ -16,6 +16,7 @@ public class day7 {
             while (scanner.hasNextLine()) {
                 input[index++] = scanner.nextLine();
             }
+            scanner.close();
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(1);

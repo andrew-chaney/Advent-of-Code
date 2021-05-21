@@ -13,6 +13,7 @@ public class day8 {
             while (scanner.hasNextLine()) {
                 fileInput[index++] = scanner.nextLine();
             }
+            scanner.close();
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(1);

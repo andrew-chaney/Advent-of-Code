@@ -7,7 +7,7 @@ public class day5 {
     public static void main(String[] args) 
     {
         String doorID = "abbhdwsy";
-        String testID = "abc";
+        //String testID = "abc";
 
         // Tests
         //assertion_test(part1(testID), "18f47a30", 1);
