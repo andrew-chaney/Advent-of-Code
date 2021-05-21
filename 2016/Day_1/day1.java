@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.lang.Math;
 
 public class day1 {
-    public static void main (String[] argv) {
+    public static void main (String[] args) {
         String path = "puzzle_input.txt";
         File myFile = new File(path);
         ArrayList<String> directions = new ArrayList<>();
