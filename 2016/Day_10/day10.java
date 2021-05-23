@@ -20,7 +20,7 @@ public class day10 {
             System.exit(1);
         }
         
-        Bot[] bots = new Bot[210];
+        Bot[] bots = new Bot[210]; // got size by: grep -o "bot \d\d\d" puzzle_input.txt | sort -u
         for (int i = 0; i < bots.length; i++) {
             bots[i] = new Bot();
         }
@@ -74,12 +74,12 @@ public class day10 {
 
     static int[] distribute(Bot[] bots, int chipTotal, int targetA, int targetB) 
     {
-        int size = 21;
+        int size = 21; // got size by: grep -o "output \d*" puzzle_input.txt | sort -u
         ArrayList<ArrayList<Integer>> output = new ArrayList<ArrayList<Integer>>(size);
         for (int i = 0; i < size; i++) {
             output.add(new ArrayList<Integer>());
         }
-        int targetBot = -1;
+        int targetBot = 0;
 
         while (chipsInBins(output) < chipTotal) {
             for (int i = 0; i < bots.length; i++) {
