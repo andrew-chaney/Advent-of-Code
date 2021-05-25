@@ -58,7 +58,7 @@ public class day11 {
                     So, y = 2x + C
             When we set x = 2 we get y = 2(2) + C. We already know the moves 
             necessary to move 2 items up a floor is y = 1. So, 1 = 4 + C and we 
-            get that C = 3. This makes sense, because there will be a trip 
+            get that C = -3. This makes sense, because there will be a trip 
             where you don't have to go up, down, and back up in the  elevator 
             for each floor.
             
