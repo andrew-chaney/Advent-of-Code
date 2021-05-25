@@ -66,7 +66,7 @@ public class day11 {
             the table to confirm that all of its values match.
 
             All said and done we get the following equation:
-                    { y = 1         for x < 2
+                    { y = x         for 0 <= x < 2
                 y = { Note, items will only ever be whole numbers.
                     { y = 2x - 3    for 2 <= x < infiniti
 
