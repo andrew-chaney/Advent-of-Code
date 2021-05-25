@@ -66,11 +66,11 @@ public class day11 {
 
     static int move(int[] input, boolean part2) 
     {
-        int steps = 0;
-        int previousFloorContents = 0;
         if (part2 == true) {
             input[0] += 4;
         }
+        int steps = 0;
+        int previousFloorContents = 0;
         for (int i = 0; i < input.length - 1; i++) {
             int itemsOnFloor = input[i] + previousFloorContents;
             if (itemsOnFloor == 0) {
