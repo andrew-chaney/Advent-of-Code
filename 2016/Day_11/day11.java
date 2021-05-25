@@ -30,7 +30,7 @@ public class day11 {
         /*
             The amount of moves to move items up a floor based on the number of 
             items on the current floor (remember, elevator capacity is 2):
-                1 item = 1 move   (up with 2)
+                1 item = 1 move   (up with 1)
                 2 items = 1 move  (up with 2)
                 3 items = 3 moves (up with 2, down with 1, up with 2)
                 4 items = 5 moves (up with 2, down with 1, up with 2, down with 1, up with 2)
