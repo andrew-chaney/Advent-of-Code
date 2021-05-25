@@ -46,7 +46,7 @@ public class day11 {
 
             We know that x = 1, only 1 item on the floor that needs to be 
             shifted, is an anomoly. Optimally, we will always move 2 items in 
-            one trip wherever we can move 2 items at once. Therefor, when y = x 
+            one trip wherever we can move 2 items at once. Therefore, when y = x 
             when x <= 1.
 
             So, we can say that for every x where x > 1 the amount of moves is 
