@@ -22,7 +22,7 @@ public class day3 {
         } catch (Exception e) {
             System.out.println("ERROR:");
             e.printStackTrace();
-            System.exit(1);
+            System.exit(0);
         }
         System.out.println("Part 1: " + part1(triangles));
         System.out.println("Part 2: " + part2(triangles));

@@ -16,7 +16,7 @@ public class day6 {
             scanner.close();
         } catch (Exception e) {
             e.printStackTrace();
-            System.exit(1);
+            System.exit(0);
         }
 
         System.out.println("Part 1: " + errorCorrect(input, false));

@@ -19,7 +19,7 @@ public class day7 {
             scanner.close();
         } catch (Exception e) {
             e.printStackTrace();
-            System.exit(1);
+            System.exit(0);
         }
 
         int part1 = 0;

@@ -13,7 +13,7 @@ public class day9 {
             scanner.close();
         } catch (Exception e) {
             e.printStackTrace();
-            System.exit(1);
+            System.exit(0);
         }
         System.out.println("Part 1: " + decompressedLength(input, false));
         System.out.println("Part 2: " + decompressedLength(input, true));

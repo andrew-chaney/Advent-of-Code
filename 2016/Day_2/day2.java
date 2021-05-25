@@ -18,7 +18,7 @@ public class day2 {
         } catch (Exception e) {
             System.out.println("ERROR:");
             e.printStackTrace();
-            System.exit(1);
+            System.exit(0);
         }
 
         int button1 = 5;

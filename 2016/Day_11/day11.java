@@ -25,7 +25,7 @@ public class day11 {
             scanner.close();
         } catch (Exception e) {
             e.printStackTrace();
-            System.exit(1);
+            System.exit(0);
         }
         /*
             The amount of moves to move items up a floor based on the number of 

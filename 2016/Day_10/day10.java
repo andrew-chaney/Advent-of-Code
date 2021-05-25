@@ -17,7 +17,7 @@ public class day10 {
             scanner.close();
         } catch (Exception e) {
             e.printStackTrace();
-            System.exit(1);
+            System.exit(0);
         }
         
         Bot[] bots = new Bot[210]; // got size by: grep -o "bot \d\d\d" puzzle_input.txt | sort -u

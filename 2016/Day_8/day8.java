@@ -16,7 +16,7 @@ public class day8 {
             scanner.close();
         } catch (Exception e) {
             e.printStackTrace();
-            System.exit(1);
+            System.exit(0);
         }
 
         int[][] screen = new int[6][50];
