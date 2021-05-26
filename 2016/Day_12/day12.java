@@ -20,9 +20,10 @@ public class day12 {
 
         for (int i = 0; i < 2; i++) {
             int[] registers = new int[4]; // registers: {a=0,b=1,c=2,d=3}
-            if (i == 1) {
+            if (i == 1) { // Solves for part 2
                 registers[2] = 1;
             }
+
             int index = 0;
             while (index < input.length) {
                 String[] instructs = input[index].split(" ");
