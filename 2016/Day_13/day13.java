@@ -28,7 +28,7 @@ public class day13 {
         return count;
     }
 
-    static boolean wallOrOpen(int puzzleInput, int x, int y)
+    static boolean isOpen(int puzzleInput, int x, int y)
     {
         // Wall = false - open = true
         int coordEval = (x * x) + (3 * x) + (2 * x * y) + y + (y * y);
@@ -45,7 +45,7 @@ public class day13 {
         char[][] map = new char[size][size];
         for (int y = 0; y < map.length; y++) {
             for (int x = 0; x < map[y].length; x++) {
-                if (wallOrOpen(puzzleInput, x, y)) {
+                if (isOpen(puzzleInput, x, y)) {
                     map[y][x] = ' ';
                 } else {
                     map[y][x] = '#';
