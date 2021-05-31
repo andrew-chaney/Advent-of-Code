@@ -32,7 +32,7 @@ public class day5 {
             }
         } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
             e.printStackTrace();
-            System.exit(1);
+            System.exit(0);
         }
         return output;
     }
