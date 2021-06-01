@@ -18,7 +18,7 @@ public class day16 {
 
     static String fillDisk(int diskSize, String data)
     {
-        String inverse = new StringBuffer(data).reverse().toString();
+        String inverse = new StringBuilder(data).reverse().toString();
         inverse = inverse.replace('0', 't');
         inverse = inverse.replace('1', '0');
         inverse = inverse.replace('t', '1');
