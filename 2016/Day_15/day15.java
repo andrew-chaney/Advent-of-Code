@@ -39,6 +39,7 @@ public class day15 {
             for (int i = 0; i < numDisks; i++) {
                 if (!isOpen(disks[i], time + 1 + i)) {
                     allOpen = false;
+                    break;
                 }
             }
             if (allOpen) {
