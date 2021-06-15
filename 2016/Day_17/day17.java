@@ -5,7 +5,6 @@ import java.util.*;
 
 public class day17 {
 
-    static String shortestPath;
     static int best = 100;
     static int worst = 0;
     static String bestPath = "";
