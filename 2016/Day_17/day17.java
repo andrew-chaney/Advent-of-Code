@@ -19,7 +19,8 @@ public class day17 {
         System.out.println("Length of the Worst Path: " + worst);
     }
 
-    static String hash(byte[] input) {
+    static String hash(byte[] input) 
+    {
         String output = new String();
         try {
             MessageDigest digest = MessageDigest.getInstance("MD5");
