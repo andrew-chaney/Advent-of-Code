@@ -27,9 +27,10 @@ public class day18 {
             System.exit(0);
         }
 
+        buildMap(40);
+        System.out.println("Part 1: " + countSafeTiles());
         buildMap(400_000);
-        System.out.println("Part 1: " + countSafeTiles(40));
-        System.out.println("Part 2: " + countSafeTiles(400_000));
+        System.out.println("Part 2: " + countSafeTiles());
     }
 
     // '.' = safe && '^' = trap
@@ -50,7 +51,7 @@ public class day18 {
 
     static void buildMap(int numRows) 
     {
-        for (int i = 1; i < numRows; i++) {
+        for (int i = map.size(); i < numRows; i++) {
             map.add(new ArrayList<Character>());
             for (int col = 0; col < map.get(i - 1).size(); col++) {
                 boolean trap;
@@ -70,10 +71,10 @@ public class day18 {
         }
     }
 
-    static int countSafeTiles(int numRows) 
+    static int countSafeTiles() 
     {
         int safeCount = 0;
-        for (int i = 0; i < numRows; i++) {
+        for (int i = 0; i < map.size(); i++) {
             for (int j = 0; j < map.get(i).size(); j++) {
                 if (map.get(i).get(j) == '.') {
                     safeCount++;
