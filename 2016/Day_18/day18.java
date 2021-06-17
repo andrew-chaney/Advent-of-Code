@@ -13,13 +13,9 @@ public class day18 {
 
         try {
             Scanner scanner = new Scanner(file);
-            int lineTracker = 0;
-            while (scanner.hasNextLine()) {
-                String nextLine = scanner.nextLine();
-                for (char c: nextLine.toCharArray()) {
-                    map.get(lineTracker).add(c);
-                }
-                lineTracker++;
+            String nextLine = scanner.nextLine();
+            for (char c: nextLine.toCharArray()) {
+                map.get(0).add(c);
             }
             scanner.close();
         } catch (Exception e) {
