@@ -77,49 +77,33 @@ public class day20 {
         }
 
         LinkedList<Long[]> blockedIPs = pairs.gather(); 
-        System.out.println("Part 1: " + part1(blockedIPs));
-        System.out.println("Part 2: " + part2(blockedIPs));
+        System.out.println("Part 1: " + solve(blockedIPs, false));
+        System.out.println("Part 2: " + solve(blockedIPs, true));
     }
 
-    static long part1(LinkedList<Long[]> blockedIPs) {
+    static long solve(LinkedList<Long[]> blockedIPs, boolean part2) {
+        long allowed = 0;
         long ip = 0;
-        while (true) {
+        long range = 4294967295L;
+        
+        while (ip < range) {
             boolean flag = true;
-            for (Long[] bounds: blockedIPs) {
+            for (Long[] bounds : blockedIPs) {
                 long lower = bounds[0];
                 long upper = bounds[1];
-                if ( (ip >= lower) && (ip <= upper) ) {
+                if ((ip >= lower) && (ip <= upper)) {
                     ip = upper;
                     flag = false;
                     break;
                 }
             }
             if (flag == true) {
-                return ip;
-            }
-            ip++;
-        }
-    }
-
-    static int part2(LinkedList<Long[]> blockedIPs) {
-        int allowed = 0;
-        long index = 0;
-        long range = 4294967295L;
-        while (index < range) {
-            boolean flag = true;
-            for (Long[] bounds: blockedIPs) {
-                long lower = bounds[0];
-                long upper = bounds[1];
-                if ( (index >= lower) && (index <= upper) ) {
-                    index = upper;
-                    flag = false;
-                    break;
+                if (!part2) {
+                    return ip;
                 }
-            }
-            if (flag == true) {
                 allowed++;
             }
-            index++;
+            ip++;
         }
         return allowed;
     }
