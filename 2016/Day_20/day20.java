@@ -97,7 +97,7 @@ public class day20 {
                     break;
                 }
             }
-            if (flag == true) {
+            if (flag) {
                 if (!part2) {
                     return ip;
                 }
