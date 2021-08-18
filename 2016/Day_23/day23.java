@@ -25,12 +25,14 @@ public class day23 {
         System.out.println("Part 1: " + solve(7));
 
         // Part 2
-        /*  Part 2 input is an altered version of the original input. Using the 
+        /*  
+            Part 2 input is an altered version of the original input. Using the 
             hint on the puzzle page, a 'mul' command is added as a peephole 
             optimization to the instruction set. "mul x y z" takes the product 
             of y * z and stores it in register x. "cpy -16 c" is also changed 
-            to "cpy -12 c" to allow for proper jumping after the toggle. 
-            Otherwise, there will be an out of bounds exception.
+            to "cpy -12 c" to allow for proper jumping after the toggle, this
+            accounts for the number of lines in the file removed (26 to 22). 
+            Without this change there would be an out of bounds exception.
         */
         file = new File("part2_input.txt");
         String[] input2 = new String[22];
