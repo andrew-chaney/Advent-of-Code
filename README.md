@@ -6,7 +6,7 @@ Individual years will be completed in the same language. However, year-to-year l
 
 2016: Java
 
-2017:
+2017: Python3
 
 2018:
 
