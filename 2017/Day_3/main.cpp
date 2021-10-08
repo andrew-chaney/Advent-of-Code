@@ -16,7 +16,7 @@ int cellValue(vector< vector<int> > grid, int row, int col) {
         // Above
         sum += grid[row - 1][col];
         // Top 
-        if (col < grid.size()) {
+        if (col < grid.size() - 1) {
             sum += grid[row - 1][col + 1];
         }
     }
@@ -25,11 +25,11 @@ int cellValue(vector< vector<int> > grid, int row, int col) {
         sum += grid[row][col - 1];
     }
     // Right
-    if (col < grid.size())
+    if (col < grid.size() - 1)
     {
         sum += grid[row][col + 1];
     }
-    if (row < grid.size()) {
+    if (row < grid.size() - 1) {
         // Bottom Left
         if (col > 0) {
             sum += grid[row + 1][col - 1];
@@ -37,7 +37,7 @@ int cellValue(vector< vector<int> > grid, int row, int col) {
         // Lower
         sum += grid[row + 1][col];
         // Bottom Right
-        if (col < grid.size()) {
+        if (col < grid.size() - 1) {
             sum += grid[row + 1][col + 1];
         }
     }
