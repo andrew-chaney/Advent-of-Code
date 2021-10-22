@@ -70,11 +70,6 @@ int validPassphrase_pt2(vector<string> input) {
 int main() {
     string path = "puzzle_input.txt";
     fstream file;
-    string testStrings[] = {
-        "abcde fghij",          // valid
-        "abcde xyz ecdab",      // invalid
-        "a ab abc abd abf abj", // valid
-    };
 
     int part1 = 0;
     int part2 = 0;
