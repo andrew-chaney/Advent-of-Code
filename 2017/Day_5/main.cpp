@@ -12,16 +12,9 @@ int parseJumps(vector<int> input, bool part2) {
         {
             return steps;
         }
-        int mod = 0;
-        if (part2 == false) {
-            mod = 1;
-        } else {
-            if (input[index] >= 3) {
-                mod = -1;
-            }
-            else {
-                mod = 1;
-            }
+        int mod = 1;
+        if (part2 == true && input[index] >= 3) {
+            mod = -1;
         }
         input[index] += mod;
         index += input[index] - mod;
