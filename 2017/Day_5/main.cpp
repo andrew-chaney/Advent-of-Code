@@ -38,6 +38,7 @@ int main() {
             int num = stoi(line);
             input.push_back(num);
         }
+        file.close();
     }
 
     cout << parseJumps(input, false) << endl;
