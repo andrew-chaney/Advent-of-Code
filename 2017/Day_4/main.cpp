@@ -29,14 +29,7 @@ int validPassphrase_pt1(vector<string> input) {
 int compStringContents(string s1, string s2) {
     int s1Breakdown [26] = {};
     int s2Breakdown [26] = {};
-
-    // for (int i = 0; i < 26; i++) {
-    //     s1Breakdown[i] = 0;
-    //     s2Breakdown[i] = 0;
-    // }
-
-    // They can share the same loop since we already made sure
-    // that they are the same size
+    
     for (int i = 0; i < s1.length(); i++) {
         s1Breakdown[int(s1.at(i)) - 97] += 1;
         s2Breakdown[int(s2.at(i)) - 97] += 1;
