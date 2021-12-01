@@ -6,7 +6,7 @@ function main() {
     try {
         input = fs.readFileSync(filename, "utf-8").split("\n").map(Number);
     } catch {
-        console.log(`ERROR: Couldn't read file ${filename}.`);
+        console.log(`ERROR: Couldn't read file ${filename}`);
         process.exit(0);
     }
     
