@@ -2,7 +2,7 @@ const fs = require("fs");
 
 function main() {
     let filename = "puzzle_input.txt";
-    let input = []
+    let input = [];
     try {
         input = fs.readFileSync(filename, "utf-8").split("\n").map(Number);
     } catch {
