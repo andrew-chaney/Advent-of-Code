@@ -22,22 +22,22 @@ function part2(input) {
     let co2arr = input;
     
     let i = 0;
-    do {
+    while (o2arr.length > 1) {
         let o2size = o2arr.length;
         let o2bit = o2arr.reduce(
             (c, a) => c + Number(a[i]), 0) < o2size / 2 ? 0 : 1;
         o2arr = o2arr.filter(x => x[i] == o2bit);
         i++;
-    } while (o2arr.length > 1);
+    }
 
     i = 0;
-    do {
+    while (co2arr.length > 1) {
         let co2size = co2arr.length;
         let co2bit = co2arr.reduce(
             (c, a) => c + Number(a[i]), 0) < co2size / 2 ? 1 : 0;
         co2arr = co2arr.filter(x => x[i] == co2bit);
         i++;
-    } while (co2arr.length > 1);
+    }
 
     return parseInt(o2arr[0], 2) * parseInt(co2arr[0], 2);
 }
