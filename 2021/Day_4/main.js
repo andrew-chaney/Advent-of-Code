@@ -1,5 +1,4 @@
 const fs = require("fs");
-const { threadId } = require("worker_threads");
 
 class Board {
     constructor() {
