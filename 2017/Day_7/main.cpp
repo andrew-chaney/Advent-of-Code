@@ -55,14 +55,6 @@ int sum_weight(string node, map<string, int> values, map<string, vector<string> 
     return sum;
 }
 
-int unique_weights(vector<int> weights) {
-    set<int> unique;
-    for (int w : weights) {
-        unique.insert(w);
-    }
-    return unique.size();
-}
-
 map<int, int> occurence_counts(vector<int> weights) {
     map<int, int> counter;
     for (int w : weights) {
